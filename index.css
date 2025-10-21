@@ -1,0 +1,60 @@
+.w-20{
+  width: 20%;
+}
+
+.w-30{
+  width: 30%;
+}
+.img-size{
+  width: 200px;
+ 
+}
+.bi{
+  margin-right: 10px;
+}
+
+.story{
+  height: 70px;
+  padding: 10px;
+
+}
+
+.dp{
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 5px;
+
+}
+.post_pic{
+  width: 550px;
+}
+.username{
+  font-weight: bold;
+
+}
+.switch{
+  margin-top: 12px;
+  padding-left: 50px;
+} 
+.suggestions .dp{
+  margin-top: 0px !important;
+}
+.suggest_name{
+  font-size: 20px;
+}
+.follow{
+  padding-top: 8px;
+}
+
+.gradient-border{
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #cf09cf, #f37c2d, #ffe88c);
+}
+.story-dp{
+  width: 60px;
+}
