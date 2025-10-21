@@ -1,0 +1,400 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "user": {
+        "id": 101,
+        "username": "johndoe",
+        "fullName": "John Doe",
+        "avatar": "https://i.pravatar.cc/150?img=12",
+        "isVerified": true
+      },
+      "image": "https://picsum.photos/600/600?random=1",
+      "caption": "Beautiful sunset at the beach 🌅 #sunset #nature #photography",
+      "likes": 1243,
+      "isLiked": false,
+      "isSaved": false,
+      "comments": [
+        {
+          "id": 1001,
+          "user": {
+            "username": "sarah_m",
+            "avatar": "https://i.pravatar.cc/150?img=5"
+          },
+          "text": "Stunning view! 😍",
+          "timestamp": "2h ago"
+        },
+        {
+          "id": 1002,
+          "user": {
+            "username": "mike_photo",
+            "avatar": "https://i.pravatar.cc/150?img=13"
+          },
+          "text": "What camera did you use?",
+          "timestamp": "1h ago"
+        }
+      ],
+      "timestamp": "3 hours ago",
+      "location": "Malibu Beach, CA"
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 102,
+        "username": "emma_wilson",
+        "fullName": "Emma Wilson",
+        "avatar": "https://i.pravatar.cc/150?img=45",
+        "isVerified": false
+      },
+      "image": "https://picsum.photos/600/600?random=2",
+      "caption": "Coffee and code ☕💻 #developer #coding #webdev",
+      "likes": 892,
+      "isLiked": true,
+      "isSaved": false,
+      "comments": [
+        {
+          "id": 2001,
+          "user": {
+            "username": "dev_alex",
+            "avatar": "https://i.pravatar.cc/150?img=33"
+          },
+          "text": "That's the life! What are you working on?",
+          "timestamp": "30m ago"
+        }
+      ],
+      "timestamp": "5 hours ago",
+      "location": "San Francisco, CA"
+    },
+    {
+      "id": 3,
+      "user": {
+        "id": 103,
+        "username": "travel_with_lisa",
+        "fullName": "Lisa Anderson",
+        "avatar": "https://i.pravatar.cc/150?img=20",
+        "isVerified": true
+      },
+      "image": "https://picsum.photos/600/600?random=3",
+      "caption": "Exploring the streets of Paris 🇫🇷✨ #travel #paris #wanderlust",
+      "likes": 3421,
+      "isLiked": true,
+      "isSaved": true,
+      "comments": [
+        {
+          "id": 3001,
+          "user": {
+            "username": "james_t",
+            "avatar": "https://i.pravatar.cc/150?img=15"
+          },
+          "text": "Paris is beautiful this time of year!",
+          "timestamp": "4h ago"
+        },
+        {
+          "id": 3002,
+          "user": {
+            "username": "travel_bug",
+            "avatar": "https://i.pravatar.cc/150?img=25"
+          },
+          "text": "Adding this to my bucket list! 🎒",
+          "timestamp": "3h ago"
+        },
+        {
+          "id": 3003,
+          "user": {
+            "username": "marie_france",
+            "avatar": "https://i.pravatar.cc/150?img=9"
+          },
+          "text": "Welcome to Paris! 🥐",
+          "timestamp": "2h ago"
+        }
+      ],
+      "timestamp": "8 hours ago",
+      "location": "Paris, France"
+    },
+    {
+      "id": 4,
+      "user": {
+        "id": 104,
+        "username": "fitness_mark",
+        "fullName": "Mark Johnson",
+        "avatar": "https://i.pravatar.cc/150?img=52",
+        "isVerified": false
+      },
+      "image": "https://picsum.photos/600/600?random=4",
+      "caption": "Morning workout done! 💪 No excuses. #fitness #gym #motivation",
+      "likes": 654,
+      "isLiked": false,
+      "isSaved": false,
+      "comments": [
+        {
+          "id": 4001,
+          "user": {
+            "username": "gym_rat_joe",
+            "avatar": "https://i.pravatar.cc/150?img=60"
+          },
+          "text": "Beast mode! 🔥",
+          "timestamp": "1h ago"
+        }
+      ],
+      "timestamp": "10 hours ago",
+      "location": "Gold's Gym"
+    },
+    {
+      "id": 5,
+      "user": {
+        "id": 105,
+        "username": "foodie_bella",
+        "fullName": "Isabella Martinez",
+        "avatar": "https://i.pravatar.cc/150?img=36",
+        "isVerified": true
+      },
+      "image": "https://picsum.photos/600/600?random=5",
+      "caption": "Homemade pasta from scratch! 🍝👨‍🍳 Recipe coming soon! #foodie #cooking #italian",
+      "likes": 2156,
+      "isLiked": true,
+      "isSaved": true,
+      "comments": [
+        {
+          "id": 5001,
+          "user": {
+            "username": "chef_tony",
+            "avatar": "https://i.pravatar.cc/150?img=68"
+          },
+          "text": "Looks delicious! Can't wait for the recipe!",
+          "timestamp": "5h ago"
+        },
+        {
+          "id": 5002,
+          "user": {
+            "username": "pasta_lover",
+            "avatar": "https://i.pravatar.cc/150?img=27"
+          },
+          "text": "Yum! 🤤",
+          "timestamp": "4h ago"
+        }
+      ],
+      "timestamp": "12 hours ago",
+      "location": "Home Kitchen"
+    },
+    {
+      "id": 6,
+      "user": {
+        "id": 106,
+        "username": "tech_guru_sam",
+        "fullName": "Samuel Chen",
+        "avatar": "https://i.pravatar.cc/150?img=14",
+        "isVerified": true
+      },
+      "image": "https://picsum.photos/600/600?random=6",
+      "caption": "New setup complete! 🖥️⌨️ #tech #setup #productivity",
+      "likes": 1876,
+      "isLiked": false,
+      "isSaved": false,
+      "comments": [
+        {
+          "id": 6001,
+          "user": {
+            "username": "setup_goals",
+            "avatar": "https://i.pravatar.cc/150?img=19"
+          },
+          "text": "Clean setup! What monitor is that?",
+          "timestamp": "6h ago"
+        },
+        {
+          "id": 6002,
+          "user": {
+            "username": "minimal_desk",
+            "avatar": "https://i.pravatar.cc/150?img=41"
+          },
+          "text": "Love the minimalist aesthetic!",
+          "timestamp": "5h ago"
+        }
+      ],
+      "timestamp": "1 day ago",
+      "location": "Home Office"
+    },
+    {
+      "id": 7,
+      "user": {
+        "id": 107,
+        "username": "nature_nick",
+        "fullName": "Nicholas Brown",
+        "avatar": "https://i.pravatar.cc/150?img=56",
+        "isVerified": false
+      },
+      "image": "https://picsum.photos/600/600?random=7",
+      "caption": "Early morning hike was worth it 🏔️🌄 #hiking #nature #adventure",
+      "likes": 945,
+      "isLiked": false,
+      "isSaved": true,
+      "comments": [
+        {
+          "id": 7001,
+          "user": {
+            "username": "outdoor_olivia",
+            "avatar": "https://i.pravatar.cc/150?img=44"
+          },
+          "text": "Breathtaking view!",
+          "timestamp": "8h ago"
+        }
+      ],
+      "timestamp": "1 day ago",
+      "location": "Rocky Mountains"
+    },
+    {
+      "id": 8,
+      "user": {
+        "id": 108,
+        "username": "artist_sophia",
+        "fullName": "Sophia Rodriguez",
+        "avatar": "https://i.pravatar.cc/150?img=47",
+        "isVerified": true
+      },
+      "image": "https://picsum.photos/600/600?random=8",
+      "caption": "Finished this piece today! 🎨✨ What do you think? #art #painting #creative",
+      "likes": 2890,
+      "isLiked": true,
+      "isSaved": false,
+      "comments": [
+        {
+          "id": 8001,
+          "user": {
+            "username": "art_collector",
+            "avatar": "https://i.pravatar.cc/150?img=22"
+          },
+          "text": "Absolutely stunning! Are you selling prints?",
+          "timestamp": "10h ago"
+        },
+        {
+          "id": 8002,
+          "user": {
+            "username": "creative_minds",
+            "avatar": "https://i.pravatar.cc/150?img=31"
+          },
+          "text": "The colors are amazing! 😍",
+          "timestamp": "9h ago"
+        },
+        {
+          "id": 8003,
+          "user": {
+            "username": "modern_art",
+            "avatar": "https://i.pravatar.cc/150?img=38"
+          },
+          "text": "Talent! 👏",
+          "timestamp": "7h ago"
+        }
+      ],
+      "timestamp": "2 days ago",
+      "location": "Art Studio"
+    }
+  ],
+  "stories": [
+    {
+      "id": 1,
+      "user": {
+        "id": 101,
+        "username": "johndoe",
+        "avatar": "https://i.pravatar.cc/150?img=12"
+      },
+       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s5.jpeg",
+      "hasStory": true,
+      "isViewed": false
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 102,
+        "username": "emma_wilson",
+        "avatar": "https://i.pravatar.cc/150?img=45"
+      },
+       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s4.jpeg",
+      "hasStory": true,
+      "isViewed": true
+    },
+    {
+      "id": 3,
+      "user": {
+        "id": 103,
+        "username": "travel_with_lisa",
+        "avatar": "https://i.pravatar.cc/150?img=20"
+      },
+       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s3.jpeg",
+      "hasStory": true,
+      "isViewed": false
+    },
+    {
+      "id": 4,
+      "user": {
+        "id": 105,
+        "username": "foodie_bella",
+        "avatar": "https://i.pravatar.cc/150?img=36"
+      },
+       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s2.jpeg",
+      "hasStory": true,
+      "isViewed": false
+    },
+    {
+      "id": 5,
+      "user": {
+        "id": 108,
+        "username": "artist_sophia",
+        "avatar": "https://i.pravatar.cc/150?img=47"
+      },
+       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s1.jpeg",
+      "hasStory": true,
+      "isViewed": true
+    }
+  ],
+  "suggestions": [
+    {
+      "id": 201,
+      "username": "alex_thompson",
+      "fullName": "Alex Thompson",
+      "avatar": "https://i.pravatar.cc/150?img=50",
+      "isFollowing": false,
+      "mutualFollowers": "Followed by johndoe + 12 others"
+    },
+    {
+      "id": 202,
+      "username": "photo_diana",
+      "fullName": "Diana Smith",
+      "avatar": "https://i.pravatar.cc/150?img=28",
+      "isFollowing": false,
+      "mutualFollowers": "Followed by emma_wilson + 8 others"
+    },
+    {
+      "id": 203,
+      "username": "yoga_rachel",
+      "fullName": "Rachel Green",
+      "avatar": "https://i.pravatar.cc/150?img=35",
+      "isFollowing": false,
+      "mutualFollowers": "Followed by fitness_mark + 5 others"
+    },
+    {
+      "id": 204,
+      "username": "gamer_chris",
+      "fullName": "Christopher Lee",
+      "avatar": "https://i.pravatar.cc/150?img=59",
+      "isFollowing": false,
+      "mutualFollowers": "Followed by tech_guru_sam + 15 others"
+    },
+    {
+      "id": 205,
+      "username": "fashion_kate",
+      "fullName": "Kate Williams",
+      "avatar": "https://i.pravatar.cc/150?img=16",
+      "isFollowing": false,
+      "mutualFollowers": "New to Instagram"
+    }
+  ],
+  "currentUser": {
+    "id": 1,
+    "username": "your_username",
+    "fullName": "Your Name",
+    "avatar": "https://i.pravatar.cc/150?img=1",
+    "bio": "Learning React.js 💻",
+    "posts": 42,
+    "followers": 328,
+    "following": 156
+  }
+}
