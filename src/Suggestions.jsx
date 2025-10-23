@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function Suggestions() {
 
@@ -18,6 +19,17 @@ useEffect(() => {
     .catch(err => console.log(err))
 
 },[]);
+
+
+const handleFollow = async (id, username) => {
+    axios.post('http://localhost:3001/followers', {"id":id, "username":username})
+    .then(() => {
+        alert("followed")
+        // Update local state to remove followed user from suggestions
+        setSuggestions(prevSuggestions => prevSuggestions.filter(suggestion => suggestion.id !== id))
+    })
+    .catch(err => console.log(err))
+}
 
   return (
     <div>
@@ -44,7 +56,7 @@ useEffect(() => {
                         <div className='d-flex m-2'>
                             <img src={suggestion.avatar} alt="profile_pic_here" className='dp rounded-circle'></img>
                             <h4 className="suggest_name m-2">{suggestion.username}</h4>
-                            <p className='follow text-primary ms-auto'>follow</p>
+                            <a className='follow text-primary ms-auto' onClick = {()=>handleFollow(suggestion.id, suggestion.username)} >follow</a>
                         </div>
                     </div>
                 ))}

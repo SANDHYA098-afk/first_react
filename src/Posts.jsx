@@ -25,9 +25,9 @@ function Posts() {
                             </div>
                             <img src={post.image} alt="posts_here" className='post-pic post_pic'></img>
                             <div>
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-chat"></i>
-                                <i class="bi bi-send"></i>
+                                <i className="bi bi-heart"></i>
+                                <i className="bi bi-chat"></i>
+                                <i className="bi bi-send"></i>
                                 </div>
                                 <div>
                                    <b> {post.likes} Likes </b>

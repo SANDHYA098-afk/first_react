@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "user": {
         "id": 101,
         "username": "johndoe",
@@ -38,7 +38,7 @@
       "location": "Malibu Beach, CA"
     },
     {
-      "id": 2,
+      "id": "2",
       "user": {
         "id": 102,
         "username": "emma_wilson",
@@ -66,7 +66,7 @@
       "location": "San Francisco, CA"
     },
     {
-      "id": 3,
+      "id": "3",
       "user": {
         "id": 103,
         "username": "travel_with_lisa",
@@ -112,7 +112,7 @@
       "location": "Paris, France"
     },
     {
-      "id": 4,
+      "id": "4",
       "user": {
         "id": 104,
         "username": "fitness_mark",
@@ -140,7 +140,7 @@
       "location": "Gold's Gym"
     },
     {
-      "id": 5,
+      "id": "5",
       "user": {
         "id": 105,
         "username": "foodie_bella",
@@ -177,7 +177,7 @@
       "location": "Home Kitchen"
     },
     {
-      "id": 6,
+      "id": "6",
       "user": {
         "id": 106,
         "username": "tech_guru_sam",
@@ -214,7 +214,7 @@
       "location": "Home Office"
     },
     {
-      "id": 7,
+      "id": "7",
       "user": {
         "id": 107,
         "username": "nature_nick",
@@ -242,7 +242,7 @@
       "location": "Rocky Mountains"
     },
     {
-      "id": 8,
+      "id": "8",
       "user": {
         "id": 108,
         "username": "artist_sophia",
@@ -290,64 +290,64 @@
   ],
   "stories": [
     {
-      "id": 1,
+      "id": "1",
       "user": {
         "id": 101,
         "username": "johndoe",
         "avatar": "https://i.pravatar.cc/150?img=12"
       },
-       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s5.jpeg",
+      "image": "https://images.unsplash.com/photo-1558788353-f76d92427f16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
       "hasStory": true,
       "isViewed": false
     },
     {
-      "id": 2,
+      "id": "2",
       "user": {
         "id": 102,
         "username": "emma_wilson",
         "avatar": "https://i.pravatar.cc/150?img=45"
       },
-       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s4.jpeg",
+      "image": "https://images.pexels.com/photos/34028640/pexels-photo-34028640.jpeg",
       "hasStory": true,
       "isViewed": true
     },
     {
-      "id": 3,
+      "id": "3",
       "user": {
         "id": 103,
         "username": "travel_with_lisa",
         "avatar": "https://i.pravatar.cc/150?img=20"
       },
-       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s3.jpeg",
+      "image": "https://images.pexels.com/photos/32536411/pexels-photo-32536411.jpeg",
       "hasStory": true,
       "isViewed": false
     },
     {
-      "id": 4,
+      "id": "4",
       "user": {
         "id": 105,
         "username": "foodie_bella",
         "avatar": "https://i.pravatar.cc/150?img=36"
       },
-       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s2.jpeg",
+      "image": "https://images.pexels.com/photos/34313660/pexels-photo-34313660.jpeg",
       "hasStory": true,
       "isViewed": false
     },
     {
-      "id": 5,
+      "id": "5",
       "user": {
         "id": 108,
         "username": "artist_sophia",
         "avatar": "https://i.pravatar.cc/150?img=47"
       },
-       "image": "C:\\Users\\karth\\Videos\\jujutsu kaisen tamil\\jjk s2\\SEM 5\\InstaGram\\InstagramClone\\src\\assets\\s1.jpeg",
+      "image": "https://images.pexels.com/photos/34235481/pexels-photo-34235481.jpeg",
       "hasStory": true,
       "isViewed": true
     }
   ],
   "suggestions": [
     {
-      "id": 201,
+      "id": "201",
       "username": "alex_thompson",
       "fullName": "Alex Thompson",
       "avatar": "https://i.pravatar.cc/150?img=50",
@@ -355,7 +355,7 @@
       "mutualFollowers": "Followed by johndoe + 12 others"
     },
     {
-      "id": 202,
+      "id": "202",
       "username": "photo_diana",
       "fullName": "Diana Smith",
       "avatar": "https://i.pravatar.cc/150?img=28",
@@ -363,7 +363,7 @@
       "mutualFollowers": "Followed by emma_wilson + 8 others"
     },
     {
-      "id": 203,
+      "id": "203",
       "username": "yoga_rachel",
       "fullName": "Rachel Green",
       "avatar": "https://i.pravatar.cc/150?img=35",
@@ -371,7 +371,7 @@
       "mutualFollowers": "Followed by fitness_mark + 5 others"
     },
     {
-      "id": 204,
+      "id": "204",
       "username": "gamer_chris",
       "fullName": "Christopher Lee",
       "avatar": "https://i.pravatar.cc/150?img=59",
@@ -379,7 +379,7 @@
       "mutualFollowers": "Followed by tech_guru_sam + 15 others"
     },
     {
-      "id": 205,
+      "id": "205",
       "username": "fashion_kate",
       "fullName": "Kate Williams",
       "avatar": "https://i.pravatar.cc/150?img=16",
@@ -387,11 +387,33 @@
       "mutualFollowers": "New to Instagram"
     }
   ],
+  "followers": [
+    {
+      "id": "204",
+      "username": "gamer_chris"
+    },
+    {
+      "id": "205",
+      "username": "fashion_kate"
+    },
+    {
+      "id": "204",
+      "username": "gamer_chris"
+    },
+    {
+      "id": "202",
+      "username": "photo_diana"
+    },
+    {
+      "id": "201",
+      "username": "alex_thompson"
+    }
+  ],
   "currentUser": {
     "id": 1,
-    "username": "your_username",
+    "username": "sandy_0123",
     "fullName": "Your Name",
-    "avatar": "https://i.pravatar.cc/150?img=1",
+    "avatar": "https://i.pravatar.cc/150?img=2",
     "bio": "Learning React.js 💻",
     "posts": 42,
     "followers": 328,
