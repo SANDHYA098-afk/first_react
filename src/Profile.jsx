@@ -2,17 +2,30 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import BackButton from './BackButton.jsx';
-import mockData from '../db/db.json'
 
 function Profile() {
 
-const [profile, setProfile] = useState(mockData.currentUser || null);
-const [followers, setFollowers] = useState(mockData.followers || []);
+const [profile, setProfile] = useState(null);
+const [followers, setFollowers] = useState([]);
 
 useEffect(() => {
-    // Data is already loaded from mockData
-    setProfile(mockData.currentUser || null);
-    setFollowers(mockData.followers || []);
+    // Fetch current user profile from API
+    axios.get('http://localhost:3001/currentUser')
+        .then(response => {
+            setProfile(response.data);
+        })
+        .catch(error => {
+            console.error('Error fetching profile:', error);
+        });
+    
+    // Fetch followers from API
+    axios.get('http://localhost:3001/followers')
+        .then(response => {
+            setFollowers(response.data);
+        })
+        .catch(error => {
+            console.error('Error fetching followers:', error);
+        });
 },[])
 
 
@@ -27,28 +40,46 @@ function HandleOnChange(e){
 
 
 const handleUpdate = async () => {
-    console.log("Profile updated locally", profile);
-    // Since we're using static data, just show a success message
-    alert("Profile updated successfully!");
+    try {
+        // Update profile via API
+        await axios.put('http://localhost:3001/currentUser', profile);
+        alert("Profile updated successfully!");
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        alert("Failed to update profile. Please try again.");
+    }
 }
 
 
 const handleUnfollow = async(id) => {
-    // Optimistically update UI first
-    setFollowers(prevFollowers => 
-        prevFollowers.map(follower => 
-            follower.id === id 
-                ? { ...follower, isUnfollowing: true } 
-                : follower
-        )
-    )
-    
-    // Remove from list after a delay (simulating API call)
-    setTimeout(() => {
+    try {
+        // Optimistically update UI first
+        setFollowers(prevFollowers => 
+            prevFollowers.map(follower => 
+                follower.id === id 
+                    ? { ...follower, isUnfollowing: true } 
+                    : follower
+            )
+        );
+        
+        // Delete from API
+        await axios.delete(`http://localhost:3001/followers/${id}`);
+        
+        // Update state to remove the unfollowed user
         setFollowers(prevFollowers => 
             prevFollowers.filter(follower => follower.id !== id)
-        )
-    }, 300)
+        );
+    } catch (error) {
+        console.error('Error unfollowing user:', error);
+        // Revert UI on error
+        setFollowers(prevFollowers => 
+            prevFollowers.map(follower => 
+                follower.id === id 
+                    ? { ...follower, isUnfollowing: false } 
+                    : follower
+            )
+        );
+    }
 }
 
 
