@@ -4,9 +4,8 @@ import Posts from './Posts'
 function Feed() {
   return (
     <div>
-        <div className='story'><Stories/></div>
+        <div className='story mb-4'><Stories/></div>
         <div><Posts/></div>
-
     </div>
   )
 }

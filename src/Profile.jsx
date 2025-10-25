@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
+import BackButton from './BackButton.jsx';
 
 function Profile() {
 
@@ -41,13 +42,34 @@ axios.put('http://localhost:3001/currentUser', profile)
 
 
 const handleUnfollow = async(id) => {
-    axios.delete(`http://localhost:3001/followers/${id}`)
-    .then(() => {
-        alert("unfollowed")
-        // Update local state to remove the unfollowed user from UI
-        setFollowers(prevFollowers => prevFollowers.filter(follower => follower.id !== id))
-    })
-    .catch(err => console.log(err))
+    // Optimistically update UI first
+    setFollowers(prevFollowers => 
+        prevFollowers.map(follower => 
+            follower.id === id 
+                ? { ...follower, isUnfollowing: true } 
+                : follower
+        )
+    )
+    
+    try {
+        await axios.delete(`http://localhost:3001/followers/${id}`)
+        // Remove from list after successful delete
+        setTimeout(() => {
+            setFollowers(prevFollowers => 
+                prevFollowers.filter(follower => follower.id !== id)
+            )
+        }, 300)
+    } catch (err) {
+        console.log(err)
+        // Revert on error
+        setFollowers(prevFollowers => 
+            prevFollowers.map(follower => 
+                follower.id === id 
+                    ? { ...follower, isUnfollowing: false } 
+                    : follower
+            )
+        )
+    }
 }
 
 
@@ -55,6 +77,7 @@ const handleUnfollow = async(id) => {
 
   return (
     <div className='m-5'>
+      <BackButton />
 
 {
     profile ? (
@@ -79,19 +102,26 @@ const handleUnfollow = async(id) => {
 
 {
     followers.length > 0 ? (
-        followers.map(follower => (
-            <div key={follower.id} className='d-flex my-2' >
-                {follower.username}
-                <button className='btn btn-primary ms-auto' onClick={()=>{handleUnfollow(follower.id)}} >Unfollow</button>
-
-
-
-                </div>
-        ))
-    ) : (
         <div>
-            Loading followers
-            </div>
+            <h4 className='my-3'>Following</h4>
+            {followers.map(follower => (
+                <div key={follower.id} className='d-flex align-items-center my-3 p-2 hover-bg rounded'>
+                    <i className="bi bi-person-circle" style={{fontSize: '24px', marginRight: '10px'}}></i>
+                    <span className='fw-bold'>{follower.username}</span>
+                    <button 
+                        className={`btn ms-auto ${follower.isUnfollowing ? 'btn-secondary' : 'btn-outline-primary'}`}
+                        onClick={() => handleUnfollow(follower.id)}
+                        disabled={follower.isUnfollowing}
+                    >
+                        {follower.isUnfollowing ? 'Unfollowing...' : 'Unfollow'}
+                    </button>
+                </div>
+            ))}
+        </div>
+    ) : (
+        <div className='text-center my-4 text-secondary'>
+            Not following anyone yet
+        </div>
     )
 }
 

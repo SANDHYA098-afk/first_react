@@ -22,13 +22,34 @@ useEffect(() => {
 
 
 const handleFollow = async (id, username) => {
-    axios.post('http://localhost:3001/followers', {"id":id, "username":username})
-    .then(() => {
-        alert("followed")
-        // Update local state to remove followed user from suggestions
-        setSuggestions(prevSuggestions => prevSuggestions.filter(suggestion => suggestion.id !== id))
-    })
-    .catch(err => console.log(err))
+    // Optimistically update UI first
+    setSuggestions(prevSuggestions => 
+        prevSuggestions.map(suggestion => 
+            suggestion.id === id 
+                ? { ...suggestion, isFollowing: true } 
+                : suggestion
+        )
+    )
+    
+    try {
+        await axios.post('http://localhost:3001/followers', {"id":id, "username":username})
+        // After successful API call, remove from suggestions after a short delay
+        setTimeout(() => {
+            setSuggestions(prevSuggestions => 
+                prevSuggestions.filter(suggestion => suggestion.id !== id)
+            )
+        }, 500)
+    } catch (err) {
+        console.log(err)
+        // Revert on error
+        setSuggestions(prevSuggestions => 
+            prevSuggestions.map(suggestion => 
+                suggestion.id === id 
+                    ? { ...suggestion, isFollowing: false } 
+                    : suggestion
+            )
+        )
+    }
 }
 
   return (
@@ -56,7 +77,13 @@ const handleFollow = async (id, username) => {
                         <div className='d-flex m-2'>
                             <img src={suggestion.avatar} alt="profile_pic_here" className='dp rounded-circle'></img>
                             <h4 className="suggest_name m-2">{suggestion.username}</h4>
-                            <a className='follow text-primary ms-auto' onClick = {()=>handleFollow(suggestion.id, suggestion.username)} >follow</a>
+                            <a 
+                                className={`follow ms-auto ${suggestion.isFollowing ? 'text-secondary' : 'text-primary'}`}
+                                onClick={() => handleFollow(suggestion.id, suggestion.username)}
+                                style={{ cursor: suggestion.isFollowing ? 'default' : 'pointer' }}
+                            >
+                                {suggestion.isFollowing ? 'Following' : 'Follow'}
+                            </a>
                         </div>
                     </div>
                 ))}

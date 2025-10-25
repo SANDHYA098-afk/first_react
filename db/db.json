@@ -286,6 +286,24 @@
       ],
       "timestamp": "2 days ago",
       "location": "Art Studio"
+    },
+    {
+      "id": "1761377573043",
+      "user": {
+        "id": 1,
+        "username": "sandy_0123",
+        "fullName": "Your Name",
+        "avatar": "https://i.pravatar.cc/150?img=2",
+        "isVerified": false
+      },
+      "image": "https://i.pravatar.cc/150?img=58",
+      "caption": "hello....",
+      "likes": 0,
+      "isLiked": false,
+      "isSaved": false,
+      "comments": [],
+      "timestamp": "Just now",
+      "location": "berlin"
     }
   ],
   "stories": [
@@ -389,20 +407,16 @@
   ],
   "followers": [
     {
+      "id": "202",
+      "username": "photo_diana"
+    },
+    {
       "id": "204",
       "username": "gamer_chris"
     },
     {
       "id": "205",
       "username": "fashion_kate"
-    },
-    {
-      "id": "204",
-      "username": "gamer_chris"
-    },
-    {
-      "id": "202",
-      "username": "photo_diana"
     },
     {
       "id": "201",
