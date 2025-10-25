@@ -2,6 +2,11 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import BackButton from './BackButton.jsx';
+import mockData from '../db/db.json';
+
+// Use environment-aware API base URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const IS_PRODUCTION = import.meta.env.PROD;
 
 function Profile() {
 
@@ -9,23 +14,32 @@ const [profile, setProfile] = useState(null);
 const [followers, setFollowers] = useState([]);
 
 useEffect(() => {
-    // Fetch current user profile from API
-    axios.get('http://localhost:3001/currentUser')
-        .then(response => {
-            setProfile(response.data);
-        })
-        .catch(error => {
-            console.error('Error fetching profile:', error);
-        });
-    
-    // Fetch followers from API
-    axios.get('http://localhost:3001/followers')
-        .then(response => {
-            setFollowers(response.data);
-        })
-        .catch(error => {
-            console.error('Error fetching followers:', error);
-        });
+    if (IS_PRODUCTION) {
+        // In production, use static mock data
+        setProfile(mockData.currentUser);
+        setFollowers(mockData.followers);
+    } else {
+        // In development, fetch from API
+        axios.get(`${API_BASE_URL}/currentUser`)
+            .then(response => {
+                setProfile(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching profile:', error);
+                // Fallback to mock data
+                setProfile(mockData.currentUser);
+            });
+        
+        axios.get(`${API_BASE_URL}/followers`)
+            .then(response => {
+                setFollowers(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching followers:', error);
+                // Fallback to mock data
+                setFollowers(mockData.followers);
+            });
+    }
 },[])
 
 
@@ -40,46 +54,47 @@ function HandleOnChange(e){
 
 
 const handleUpdate = async () => {
-    try {
-        // Update profile via API
-        await axios.put('http://localhost:3001/currentUser', profile);
-        alert("Profile updated successfully!");
-    } catch (error) {
-        console.error('Error updating profile:', error);
-        alert("Failed to update profile. Please try again.");
+    if (IS_PRODUCTION) {
+        // In production (demo mode), just update local state
+        alert("Profile updated successfully! (Demo mode - changes won't persist)");
+    } else {
+        try {
+            // Update profile via API
+            await axios.put(`${API_BASE_URL}/currentUser`, profile);
+            alert("Profile updated successfully!");
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            alert("Profile updated locally (API unavailable)");
+        }
     }
 }
 
 
 const handleUnfollow = async(id) => {
-    try {
-        // Optimistically update UI first
-        setFollowers(prevFollowers => 
-            prevFollowers.map(follower => 
-                follower.id === id 
-                    ? { ...follower, isUnfollowing: true } 
-                    : follower
-            )
-        );
-        
-        // Delete from API
-        await axios.delete(`http://localhost:3001/followers/${id}`);
-        
-        // Update state to remove the unfollowed user
+    // Optimistically update UI first
+    setFollowers(prevFollowers => 
+        prevFollowers.map(follower => 
+            follower.id === id 
+                ? { ...follower, isUnfollowing: true } 
+                : follower
+        )
+    );
+    
+    if (!IS_PRODUCTION) {
+        try {
+            // Delete from API in development
+            await axios.delete(`${API_BASE_URL}/followers/${id}`);
+        } catch (error) {
+            console.error('Error unfollowing user:', error);
+        }
+    }
+    
+    // Update state to remove the unfollowed user (works in both modes)
+    setTimeout(() => {
         setFollowers(prevFollowers => 
             prevFollowers.filter(follower => follower.id !== id)
         );
-    } catch (error) {
-        console.error('Error unfollowing user:', error);
-        // Revert UI on error
-        setFollowers(prevFollowers => 
-            prevFollowers.map(follower => 
-                follower.id === id 
-                    ? { ...follower, isUnfollowing: false } 
-                    : follower
-            )
-        );
-    }
+    }, 300);
 }
 
 
