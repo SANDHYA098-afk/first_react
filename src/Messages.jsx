@@ -58,7 +58,7 @@ function Messages() {
         avatar: 'https://i.pravatar.cc/150?img=36',
         fullName: 'Isabella Martinez'
       },
-      lastMessage: 'You: That recipe looks delicious! 👨‍🍳',
+      lastMessage: 'That recipe looks delicious! 👨‍🍳',
       timestamp: '3d',
       unread: 0,
       isOnline: true
@@ -162,12 +162,12 @@ function Messages() {
               </div>
 
               <div className='message sent'>
-                <div className='message-bubble'>That sounds great! Let me know when you're free 😊</div>
+                <div className='message-bubble'>That sounds great!</div>
               </div>
 
               <div className='message received'>
                 <img src={selectedChat.user.avatar} alt="" className='message-avatar rounded-circle' />
-                <div className='message-bubble'>Will do!</div>
+                <div className='message-bubble'>Yup...</div>
               </div>
             </div>
 
@@ -187,7 +187,7 @@ function Messages() {
           <div className='chat-empty'>
             <i className="bi bi-chat-dots" style={{fontSize: '96px', color: 'var(--text-secondary)'}}></i>
             <h3>Your Messages</h3>
-            <p className='text-secondary'>Send private photos and messages to a friend or group.</p>
+            <p className='text-secondary'>Send photos and messages to a friend or group.</p>
             <button className='btn btn-primary'>Send Message</button>
           </div>
         )}
