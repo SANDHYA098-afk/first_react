@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import BackButton from './BackButton.jsx'
+import mockData from '../db/db.json'
 
 
 function ViewStory() {
@@ -16,10 +17,9 @@ const navigate = useNavigate();
 const STORY_DURATION = 5000; // 5 seconds
 
 useEffect(() => {
-  fetch(`http://localhost:3001/stories?id=${id}`)
-  .then(data => data.json())
-  .then(data => setStory(data[0]))
-  .catch(err => console.log(err))
+  // Find story from mockData
+  const foundStory = mockData.stories.find(s => s.id === id);
+  setStory(foundStory || null);
 }, [id]);
 
 // Progress bar animation

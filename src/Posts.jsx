@@ -1,15 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import mockData from '../db/db.json'
 
 function Posts() {
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(mockData.posts || []);
     
     useEffect(() => { 
-        fetch('http://localhost:3001/posts')
-        .then((data)=>data.json())
-        .then((data=> setPosts(data)))
-        .catch(err=> console.log(err))
+        // Data is already loaded from mockData
+        setPosts(mockData.posts || []);
     },[]);
 
     const handleLike = (postId) => {

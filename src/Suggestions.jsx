@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import mockData from '../db/db.json'
 
 function Suggestions() {
 
-const [profile, setProfile] = useState(null);
-const [suggestions, setSuggestions] = useState([]);
+const [profile, setProfile] = useState(mockData.currentUser || null);
+const [suggestions, setSuggestions] = useState(mockData.suggestions || []);
 
 useEffect(() => {  
-
-    fetch('http://localhost:3001/currentUser')
-    .then(data => data.json())
-    .then(data => setProfile(data))
-    .catch(err => console.log(err))
-
-    fetch('http://localhost:3001/suggestions')
-    .then(data => data.json())
-    .then(data => setSuggestions(data))
-    .catch(err => console.log(err))
-
+    // Data is already loaded from mockData
+    setProfile(mockData.currentUser || null);
+    setSuggestions(mockData.suggestions || []);
 },[]);
 
 
@@ -31,25 +24,12 @@ const handleFollow = async (id, username) => {
         )
     )
     
-    try {
-        await axios.post('http://localhost:3001/followers', {"id":id, "username":username})
-        // After successful API call, remove from suggestions after a short delay
-        setTimeout(() => {
-            setSuggestions(prevSuggestions => 
-                prevSuggestions.filter(suggestion => suggestion.id !== id)
-            )
-        }, 500)
-    } catch (err) {
-        console.log(err)
-        // Revert on error
+    // Since we're using static data, just remove after a delay
+    setTimeout(() => {
         setSuggestions(prevSuggestions => 
-            prevSuggestions.map(suggestion => 
-                suggestion.id === id 
-                    ? { ...suggestion, isFollowing: false } 
-                    : suggestion
-            )
+            prevSuggestions.filter(suggestion => suggestion.id !== id)
         )
-    }
+    }, 500)
 }
 
   return (

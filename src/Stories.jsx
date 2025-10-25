@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import mockData from '../db/db.json'
 
 function Stories() {
 
-const [Stories, setStories] = useState([]);
+const [Stories, setStories] = useState(mockData.stories || []);
 
 const navigate = useNavigate();
 
 let tot = 0;
 
 useEffect(()=>{
-  fetch('http://localhost:3001/stories')
-  .then(data=>data.json())
-  .then(data=>setStories(data))
-  .catch(err=>console.log(err))
+  // Data is already loaded from mockData
+  setStories(mockData.stories || []);
 },[]);
 
   return (

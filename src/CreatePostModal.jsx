@@ -21,37 +21,13 @@ function CreatePostModal({ isOpen, onClose }) {
       return;
     }
 
-    const newPost = {
-      id: Date.now().toString(),
-      user: {
-        id: 1,
-        username: "sandy_0123",
-        fullName: "Your Name",
-        avatar: "https://i.pravatar.cc/150?img=2",
-        isVerified: false
-      },
-      image: imageUrl,
-      caption: caption,
-      likes: 0,
-      isLiked: false,
-      isSaved: false,
-      comments: [],
-      timestamp: "Just now",
-      location: location || ""
-    };
-
-    try {
-      await axios.post('http://localhost:3001/posts', newPost);
-      alert('Post created successfully!');
-      setCaption('');
-      setImageUrl('');
-      setLocation('');
-      setPreview(null);
-      onClose();
-    } catch (err) {
-      console.log(err);
-      alert('Failed to create post');
-    }
+    // Since we're using static data, just show success and close
+    alert('Post created successfully! (Note: This is a demo - posts won\'t persist)');
+    setCaption('');
+    setImageUrl('');
+    setLocation('');
+    setPreview(null);
+    onClose();
   };
 
   if (!isOpen) return null;

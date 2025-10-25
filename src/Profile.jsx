@@ -2,23 +2,17 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import BackButton from './BackButton.jsx';
+import mockData from '../db/db.json'
 
 function Profile() {
 
-const [profile, setProfile] = useState(null);
-
-const [followers, setFollowers] = useState([]);
+const [profile, setProfile] = useState(mockData.currentUser || null);
+const [followers, setFollowers] = useState(mockData.followers || []);
 
 useEffect(() => {
-
-    axios.get('http://localhost:3001/currentUser')
-    .then(data => setProfile(data.data))
-    .catch(err => console.log(err))
-
-    axios.get('http://localhost:3001/followers')
-    .then(data => setFollowers(data.data))
-    .catch(err => console.log(err))
-
+    // Data is already loaded from mockData
+    setProfile(mockData.currentUser || null);
+    setFollowers(mockData.followers || []);
 },[])
 
 
@@ -33,11 +27,9 @@ function HandleOnChange(e){
 
 
 const handleUpdate = async () => {
-
-axios.put('http://localhost:3001/currentUser', profile)
-.then(console.log("updated"))
-.catch(err => console.log(err))
-
+    console.log("Profile updated locally", profile);
+    // Since we're using static data, just show a success message
+    alert("Profile updated successfully!");
 }
 
 
@@ -51,25 +43,12 @@ const handleUnfollow = async(id) => {
         )
     )
     
-    try {
-        await axios.delete(`http://localhost:3001/followers/${id}`)
-        // Remove from list after successful delete
-        setTimeout(() => {
-            setFollowers(prevFollowers => 
-                prevFollowers.filter(follower => follower.id !== id)
-            )
-        }, 300)
-    } catch (err) {
-        console.log(err)
-        // Revert on error
+    // Remove from list after a delay (simulating API call)
+    setTimeout(() => {
         setFollowers(prevFollowers => 
-            prevFollowers.map(follower => 
-                follower.id === id 
-                    ? { ...follower, isUnfollowing: false } 
-                    : follower
-            )
+            prevFollowers.filter(follower => follower.id !== id)
         )
-    }
+    }, 300)
 }
 
 
