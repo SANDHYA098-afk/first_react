@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import mockData from '../db/db.json';
 
 function SearchModal({ isOpen, onClose }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -7,19 +8,21 @@ function SearchModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (searchTerm.trim()) {
-      // Search in posts and suggestions
-      Promise.all([
-        fetch('http://localhost:3001/posts').then(res => res.json()),
-        fetch('http://localhost:3001/suggestions').then(res => res.json())
-      ])
-        .then(([posts, suggestions]) => {
-          const userResults = suggestions.filter(s => 
-            s.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            s.fullName.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-          setSearchResults(userResults);
-        })
-        .catch(err => console.log(err));
+      // Search in mock data - combine posts users and suggestions
+      const postsUsers = mockData.posts.map(p => p.user);
+      const allUsers = [...mockData.suggestions, ...postsUsers];
+      
+      // Remove duplicates based on username
+      const uniqueUsers = allUsers.filter((user, index, self) =>
+        index === self.findIndex((u) => u.username === user.username)
+      );
+      
+      // Filter based on search term
+      const userResults = uniqueUsers.filter(s => 
+        s.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (s.fullName && s.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+      setSearchResults(userResults);
     } else {
       setSearchResults([]);
     }

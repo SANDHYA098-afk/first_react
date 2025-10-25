@@ -8,7 +8,7 @@ function MoreModal({ isOpen, onClose }) {
     { icon: 'bi-gear', label: 'Settings', action: () => console.log('Settings') },
     { icon: 'bi-clock-history', label: 'Your activity', action: () => console.log('Activity') },
     { icon: 'bi-bookmark', label: 'Saved', action: () => console.log('Saved') },
-    { icon: theme === 'light' ? 'bi-moon-stars' : 'bi-sun', label: 'Switch appearance', action: toggleTheme },
+    { icon: theme === 'light' ? 'bi-moon-stars' : 'bi-sun', label: 'Switch theme', action: toggleTheme },
     { icon: 'bi-exclamation-circle', label: 'Report a problem', action: () => console.log('Report') },
     { type: 'divider' },
     { icon: 'bi-arrow-repeat', label: 'Switch accounts', action: () => console.log('Switch') },
